@@ -1,4 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Oluş Emre Demir — Portfolio
+
+Modern, etkileşimli bir Next.js 14+ portfolyo. Mekanik ve dijital dünyalar arasında köprü kuran projeleri temaya uygun bir masa/desk arayüzü ile sergiler.
+
+## Özellikler
+
+- Temaya uygun **yükleme (boot) ekranı** ve akıcı fade/scale geçişler
+- **Draggable desk**: geniş tuval üzerinde projeleri kart olarak gezdirme
+- **TR odaklı metadata** ve **JSON-LD (Person + CreativeWork)**
+- **Dinamik OG/Twitter görselleri** (`/opengraph-image`, `/twitter-image`)
+- **Sitemap** (`/sitemap.xml`) ve **Robots** (`/robots.txt`)
+- **Favicon (SVG)** ve **Apple Touch Icon** (dinamik)
+- Framer Motion animasyonları, grid arka plan, temaya uygun UI
+
+## Kurulum
+
+```powershell
+# bağımlılıkları yükle
+npm install
+
+# geliştirme sunucusunu başlat
+npm run dev
+```
+
+Uygulama varsayılan olarak `http://localhost:3000` altında çalışır.
+
+## Proje Yapısı
+
+- `src/app/page.js`: Masa/desk arayüzü, projeler, alt sayfalar
+- `src/app/layout.js`: Global stiller ve metadata/SEO
+- `src/app/opengraph-image.js`: OG görseli (dinamik)
+- `src/app/twitter-image.js`: Twitter görseli (dinamik)
+- `src/app/icon.js`: Favicon (alternatif dinamik rota, SVG ile birlikte)
+- `src/app/apple-icon.js`: Apple Touch Icon (dinamik)
+- `src/app/sitemap.js`: Next.js App Router sitemap
+- `src/app/robots.js`: Robots yapılandırması
+- `public/favicon.svg`: Statik favicon
+
+## SEO Notları
+
+- Dil `tr` ve `openGraph.locale = tr_TR` olarak ayarlandı.
+- `alternates.languages` (hreflang) ile TR/EN sinyali veriliyor.
+- Structured Data: `Person` + `CreativeWork` JSON-LD `<head>` içine eklendi.
+- Sosyal önizleme görselleri dinamik rotalardan üretiliyor.
+- Canonical ve robots yönergeleri yayın için hazır.
+
+Arama sonuçlarında “Oluş Emre Demir” görünürlüğünü arttırmak için:
+
+- Başlıklar ve içerikte Türkçe anahtar kelimeleri kullanmaya devam edin.
+- Proje sayfalarını ayrı route’lara bölerek indekslenebilir sayfa sayısını artırın.
+- Performans (Core Web Vitals) için görselleri optimize edin (lazy-load, boyutlar, preload kritik fontlar).
+
+## Dağıtım
+
+Vercel önerilir. Next.js 14+ App Router ile uyumlu.
+
+- Ortam değişkeni gerekmiyor; tüm OG/Twitter görselleri ve ikon rotaları edge’de üretilir.
+- Alan adınız `https://olusemre.dev` ise `metadataBase` buna göre ayarlanmıştır.
+
+## Lisans
+
+Bu repo kişisel portfolyo içindir.This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 

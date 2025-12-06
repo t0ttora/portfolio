@@ -37,9 +37,13 @@ export const metadata = {
   applicationName: "Portfolio",
   alternates: {
     canonical: "/",
+    languages: {
+      "tr-TR": "/",
+      "en-US": "/",
+    },
   },
   icons: {
-    icon: "/icon",
+    icon: "/favicon.svg",
     apple: "/apple-icon",
   },
   openGraph: {
