@@ -229,6 +229,9 @@ export function PortfolioCanvasClient(props: {
     return false;
   }
 
+  const resolveSelectionRef = React.useRef(resolveSelection);
+  resolveSelectionRef.current = resolveSelection;
+
   React.useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     if (params.get("new") === "1") {
@@ -256,7 +259,7 @@ export function PortfolioCanvasClient(props: {
         rotation?: number;
       };
       if (payload.type !== "admin-portfolio-select") return;
-      const resolved = resolveSelection(payload);
+      const resolved = resolveSelectionRef.current(payload);
       if (!resolved) {
         pendingSelectionRef.current = payload;
         openNewProject();
@@ -293,7 +296,7 @@ export function PortfolioCanvasClient(props: {
   React.useEffect(() => {
     const pending = pendingSelectionRef.current;
     if (!pending) return;
-    if (resolveSelection(pending)) {
+    if (resolveSelectionRef.current(pending)) {
       pendingSelectionRef.current = null;
     }
   }, [projects]);
@@ -523,7 +526,7 @@ export function PortfolioCanvasClient(props: {
     window.setTimeout(() => {
       migrateMathStringsExtended(editor);
     }, 0);
-  }, [editor, isEditorOpen, editorHtml, draft.details]);
+  }, [editor, isEditorOpen, editorHtml, draft.details, migrateMathStringsExtended]);
 
   const MONTHS = [
     "JAN",
