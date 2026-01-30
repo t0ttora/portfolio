@@ -1,5 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { VaultProvider } from "@/components/vault/VaultProvider";
+import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -43,7 +45,7 @@ export const metadata = {
     },
   },
   icons: {
-    icon: "/favicon.svg",
+    icon: "/favicon.ico",
     apple: "/apple-icon",
   },
   openGraph: {
@@ -133,7 +135,10 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <VaultProvider>
+          {children}
+          <Toaster position="top-center" />
+        </VaultProvider>
       </body>
     </html>
   );
